@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MoodTasker Randomiser</title>
+  <style>
+    body { font-family: sans-serif; background: #f4f7fa; margin: 0; padding: 20px; text-align: center; }
+    h1 { font-size: 1.5rem; margin-bottom: 10px; }
+    select, button { padding: 10px; font-size: 1rem; margin: 10px; }
+    #result { margin-top: 20px; font-weight: bold; font-size: 1.2rem; padding: 12px; background: #fff; border-radius: 8px; display: inline-block; min-height: 40px; }
+  </style>
+</head>
+<body>
+  <h1>MoodTasker — Choose Your Mood</h1>
+  <p>Select your mood and get a ceremonial task.</p>
+
+  <select id="moodSelect">
+    <option value="">-- Select Mood --</option>
+    <option value="Happy">😊 Happy</option>
+    <option value="Sad">😢 Sad</option>
+    <option value="Tired">😴 Tired</option>
+    <option value="Bored">😐 Bored</option>
+    <option value="Lazy">🛋️ Lazy</option>
+    <option value="Stressed">😖 Stressed</option>
+    <option value="Excited">🤩 Excited</option>
+    <option value="Lonely">🧍 Lonely</option>
+  </select>
+
+  <button onclick="getTask()">Get Task</button>
+
+  <div id="result">Your task will appear here.</div>
+
+  <script>
+    const tasks = {
+      Happy: [
+        "Do a dance",
+        "Go for a walk",
+        "Listen to music",
+        "Learn a new instrument",
+        "Take an online course",
+        "Explore educational podcasts",
+        "Join a book club"
+      ],
+      Sad: [
+        "Watch a happy movie",
+        "Call a friend",
+        "Talk to a friend",
+        "Listen to soothing music",
+        "Write in a journal",
+        "Plant a small garden",
+        "Try your hand at photography"
+      ],
+      Tired: [
+        "Take a nap",
+        "Listen to soothing music",
+        "Stretch for 10 minutes",
+        "Read a book",
+        "Explore a museum",
+        "Make something from scratch",
+        "Make a hot drink"
+      ],
+      Bored: [
+        "Learn a new skill",
+        "Play a game",
+        "Explore a new hobby",
+        "Try poetry",
+        "Explore a new music genre",
+        "Draw something",
+        "Craft something from YouTube",
+        "Learn a magic trick",
+        "Write a short story"
+      ],
+      Lazy: [
+        "Order a takeaway",
+        "Watch a movie",
+        "Look at social media",
+        "Create a gratitude journal",
+        "Learn a new task",
+        "Listen to a podcast",
+        "Do a puzzle",
+        "Try a new recipe"
+      ],
+      Stressed: [
+        "Meditate",
+        "Go on a short walk",
+        "Read a book",
+        "Practice deep breathing",
+        "Engage in a hobby",
+        "Talk to a loved one",
+        "Practice yoga",
+        "Take a warm bath",
+        "Take a break from screens"
+      ],
+      Excited: [
+        "Plan an adventure",
+        "Start a new project",
+        "Plan a celebration",
+        "Design a vision board",
+        "Start a spontaneous road trip",
+        "Start a dance party",
+        "Go on an adventure",
+        "Launch a new project",
+        "Make a lavish meal"
+      ],
+      Lonely: [
+        "Join a club or group",
+        "Video call family or friends",
+        "Volunteer locally",
+        "Write a letter to a friend",
+        "Take a class to learn something new",
+        "Attend local events",
+        "Organize a gathering",
+        "Engage in sports",
+        "Join hobby groups"
+      ]
+    };
+
+    function getTask() {
+      const mood = document.getElementById("moodSelect").value;
+      const result = document.getElementById("result");
+      if (!mood || !tasks[mood]) {
+        result.textContent = "Please select a mood.";
+        return;
+      }
+      const options = tasks[mood];
+      const chosen = options[Math.floor(Math.random() * options.length)];
+      result.textContent = chosen;
+    }
+  </script>
+</body>
+</html>
